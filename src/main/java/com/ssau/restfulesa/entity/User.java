@@ -16,7 +16,7 @@ public class User implements BasicModel {
     private String password;
 
     @OneToMany
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "id_user")
     private List<Notes> notes;
 
     public List<Notes> getNotes() {

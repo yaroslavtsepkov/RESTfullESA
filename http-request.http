@@ -1,0 +1,15 @@
+POST http://localhost:8080/userAdd/10000
+Content-Type: application/json
+
+{"id": 1, "username":"test", "password":"password"}
+
+###
+###
+
+<> 2021-01-18T164751.500.json
+<> 2021-01-18T164729.500.json
+<> 2021-01-18T164711.500.json
+<> 2021-01-18T164615.200.json
+<> 2021-01-18T164553.200.json
+
+###

@@ -59,7 +59,7 @@ public class Api {
     @PostMapping(value = "/notesAdd")
     public String addNotes(@ModelAttribute("notes") Notes notes){
         jmsSender.sendObjectUpdate(notes, "ADD");
-        String body = "Add Faculty: " + notes.toString();
+        String body = "Add notes: " + notes.toString();
         Email email = new Email(UUID.randomUUID().toString(), body);
         jmsSender.sendEmail(email);
         notesRepository.save(notes);
