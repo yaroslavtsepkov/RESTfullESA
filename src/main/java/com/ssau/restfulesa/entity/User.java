@@ -1,9 +1,10 @@
 package com.ssau.restfulesa.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "users")
-public class User {
+public class User implements BasicModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -14,17 +15,29 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    @OneToMany
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private List<Notes> notes;
+
+    public List<Notes> getNotes() {
+        return notes;
     }
 
-    public Integer getId() {
+    public void setNotes(List<Notes> notes) {
+        this.notes = notes;
+    }
+
+    public User() {
+
+    }
+
+    public int getId() {
         return id;
+    }
+
+    @Override
+    public String getTableName() {
+        return "users";
     }
 
     public void setId(Integer id) {
@@ -47,12 +60,4 @@ public class User {
         this.password = password;
     }
 
-    public User(Integer id, String username, String password) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-    }
-
-    public User() {
-    }
 }

@@ -1,9 +1,13 @@
 package com.ssau.restfulesa.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity(name = "notes")
-public class Notes {
+public class Notes implements BasicModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,13 +19,16 @@ public class Notes {
     @Column(name = "content")
     private String content;
 
-    @Override
-    public String toString() {
-        return "Notes{" +
-                "id_note=" + id_note +
-                ", id_user=" + id_user +
-                ", content='" + content + '\'' +
-                '}';
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Integer getId_note() {
@@ -53,7 +60,17 @@ public class Notes {
         this.id_user = id_user;
         this.content = content;
     }
-
     public Notes() {
+    }
+
+
+    @Override
+    public int getId() {
+        return id_note;
+    }
+
+    @Override
+    public String getTableName() {
+        return "notes";
     }
 }
