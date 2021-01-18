@@ -1,9 +1,11 @@
 # RESTfullESA
 RESTfull web-service on Spring
 
-origin branch: origin 3-lab ( only api )
+two branch: 
 
-JMS: 4-lab + jms
+origin 3-lab ( only api )
+
+JMS: 3-lab + jms
 
 
 **API**
